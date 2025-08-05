@@ -107,4 +107,27 @@ public class LoanTests {
 
         return message;
     }
+
+    @Test
+    void listLoansForCustomerWithoutLoans() throws IOException, InterruptedException {
+        // login
+        Connection connection = new HttpConnection(TestConstants.BASE_URL);
+        connection.Login("test", "test");
+
+        // create a new customer
+        String name = "test_" + Instant.now().toEpochMilli();
+        mainframe.client.messages.customer.Create createMessage = sendMessage(
+                connection,
+                new mainframe.client.messages.customer.Create("2001-02-03", "Doe", name, "New Zealand", 1),
+                "create");
+        String customerNumber = createMessage.getNumber();
+
+        // list the loans
+        List listMessage = sendMessage(
+                connection,
+                new List(customerNumber, 1, 50),
+                "list");
+        List.Item[] items = listMessage.getItems();
+        Assertions.assertEquals(0, listMessage.getTotal(), "total should be zero");
+    }
 }

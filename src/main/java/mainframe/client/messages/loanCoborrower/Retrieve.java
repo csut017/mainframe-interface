@@ -27,7 +27,7 @@ public class Retrieve implements Message {
             _loanNumber = response.getValue("loanNumber");
             _customerName = response.getValue("customerName");
             String idValue = response.getValue("id");
-            _id = idValue == null ? null : Long.parseLong(idValue);
+            _id = idValue == null ? 0 : Long.parseLong(idValue);
             _type = response.getValue("type");
             _coborrowerNumber = response.getValue("coborrowerNumber");
             _coborrowerName = response.getValue("coborrowerName");

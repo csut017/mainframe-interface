@@ -36,7 +36,7 @@ public class Retrieve implements Message {
             _type = response.getValue("type");
             _otherType = response.getValue("otherType");
             String idValue = response.getValue("id");
-            _id = idValue == null ? null : Long.parseLong(idValue);
+            _id = idValue == null ? 0 : Long.parseLong(idValue);
             String isPrimaryValue = response.getValue("isPrimary");
             _isPrimary = "y".equals(isPrimaryValue);
             String isMailingValue = response.getValue("isMailing");

@@ -26,9 +26,9 @@ public class List implements Message {
         MessageResponse response = connection.send(request);
         if (response.getStatus().getWasSuccessful()) {
             String pageValue = response.getValue("page");
-            _page = pageValue == null ? null : Long.parseLong(pageValue);
+            _page = pageValue == null ? 0 : Long.parseLong(pageValue);
             String totalValue = response.getValue("total");
-            _total = totalValue == null ? null : Long.parseLong(totalValue);
+            _total = totalValue == null ? 0 : Long.parseLong(totalValue);
             long itemsCount = Long.parseLong(response.getValue("items"));
             for (int i = 1; i <= itemsCount; i++) {
                 String nameValue = response.getValue(i + ":name");

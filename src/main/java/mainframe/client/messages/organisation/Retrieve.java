@@ -19,7 +19,7 @@ public class Retrieve implements Message {
         if (response.getStatus().getWasSuccessful()) {
             _name = response.getValue("name");
             String idValue = response.getValue("id");
-            _id = idValue == null ? null : Long.parseLong(idValue);
+            _id = idValue == null ? 0 : Long.parseLong(idValue);
         }
         return response.getStatus();
     }

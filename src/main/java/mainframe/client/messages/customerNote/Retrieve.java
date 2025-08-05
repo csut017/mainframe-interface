@@ -29,7 +29,7 @@ public class Retrieve implements Message {
             _customerNumber = response.getValue("customerNumber");
             _customerName = response.getValue("customerName");
             String idValue = response.getValue("id");
-            _id = idValue == null ? null : Long.parseLong(idValue);
+            _id = idValue == null ? 0 : Long.parseLong(idValue);
             _type = response.getValue("type");
             _dateAdded = response.getValue("dateAdded");
             _lines = response.getValue("lines");

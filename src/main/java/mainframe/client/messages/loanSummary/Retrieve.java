@@ -30,7 +30,7 @@ public class Retrieve implements Message {
             String totalInterestPaidValue = response.getValue("totalInterestPaid");
             _totalInterestPaid = totalInterestPaidValue == null ? null : Double.parseDouble(totalInterestPaidValue);
             String numberOfPaymentsValue = response.getValue("numberOfPayments");
-            _numberOfPayments = numberOfPaymentsValue == null ? null : Long.parseLong(numberOfPaymentsValue);
+            _numberOfPayments = numberOfPaymentsValue == null ? 0 : Long.parseLong(numberOfPaymentsValue);
             _finalPaymentDate = response.getValue("finalPaymentDate");
             String finalPaymentAmountValue = response.getValue("finalPaymentAmount");
             _finalPaymentAmount = finalPaymentAmountValue == null ? null : Double.parseDouble(finalPaymentAmountValue);

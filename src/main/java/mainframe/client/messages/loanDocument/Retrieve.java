@@ -28,12 +28,12 @@ public class Retrieve implements Message {
             _loanNumber = response.getValue("loanNumber");
             _customerName = response.getValue("customerName");
             String idValue = response.getValue("id");
-            _id = idValue == null ? null : Long.parseLong(idValue);
+            _id = idValue == null ? 0 : Long.parseLong(idValue);
             _type = response.getValue("type");
             _fileName = response.getValue("fileName");
             _fileType = response.getValue("fileType");
             String sizeValue = response.getValue("size");
-            _size = sizeValue == null ? null : Long.parseLong(sizeValue);
+            _size = sizeValue == null ? 0 : Long.parseLong(sizeValue);
         }
         return response.getStatus();
     }

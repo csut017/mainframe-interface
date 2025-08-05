@@ -23,7 +23,7 @@ public class Retrieve implements Message {
             _name = response.getValue("name");
             _login = response.getValue("login");
             String idValue = response.getValue("id");
-            _id = idValue == null ? null : Long.parseLong(idValue);
+            _id = idValue == null ? 0 : Long.parseLong(idValue);
             _lastNumber = response.getValue("lastNumber");
             _organisation = response.getValue("organisation");
         }

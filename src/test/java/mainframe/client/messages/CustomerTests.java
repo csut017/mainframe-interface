@@ -81,4 +81,20 @@ public class CustomerTests {
 
         return message;
     }
+
+    @Test
+    void searchHandlesNoData() throws IOException, InterruptedException {
+        // Arrange
+        Connection connection = new HttpConnection(TestConstants.BASE_URL);
+        connection.Login("test", "test");
+
+        // Act
+        Search searchMessage = sendMessage(
+                connection,
+                new Search(1, "Does not exist", 25),
+                "search");
+
+        // Assert
+        Assertions.assertEquals(0, searchMessage.getTotal(), "total should be zero");
+    }
 }
