@@ -158,7 +158,7 @@ public class HttpConnection implements Connection {
             if (!httpResponse.isSuccessful()) throw new IOException("Unexpected code " + httpResponse);
 
             String data = httpResponse.body().string();
-            return data.equalsIgnoreCase("ok");
+            return data.equalsIgnoreCase("online") || data.equalsIgnoreCase("ok");
         } catch (IOException ex) {
             return false;
         }
