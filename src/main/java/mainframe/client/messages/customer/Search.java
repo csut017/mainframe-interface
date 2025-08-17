@@ -33,10 +33,11 @@ public class Search implements Message {
             for (int i = 1; i <= itemsCount; i++) {
                 String familyNameValue = response.getValue(i + ":familyName");
                 String firstNameValue = response.getValue(i + ":firstName");
+                String titleValue = response.getValue(i + ":title");
                 String dateOfBirthValue = response.getValue(i + ":dateOfBirth");
                 String statusValue = response.getValue(i + ":status");
                 String numberValue = response.getValue(i + ":number");
-                _data.add(new Item(dateOfBirthValue, familyNameValue, firstNameValue, numberValue, statusValue));
+                _data.add(new Item(dateOfBirthValue, familyNameValue, firstNameValue, numberValue, statusValue, titleValue));
             }
         }
         return response.getStatus();
@@ -65,12 +66,14 @@ public class Search implements Message {
         private String _firstName;
         private String _number;
         private String _status;
-        public Item(String dateOfBirth, String familyName, String firstName, String number, String status) {
+        private String _title;
+        public Item(String dateOfBirth, String familyName, String firstName, String number, String status, String title) {
             _dateOfBirth = dateOfBirth;
             _familyName = familyName;
             _firstName = firstName;
             _number = number;
             _status = status;
+            _title = title;
         }
         public String getDateOfBirth() {
             return _dateOfBirth;
@@ -86,6 +89,9 @@ public class Search implements Message {
         }
         public String getStatus() {
             return _status;
+        }
+        public String getTitle() {
+            return _title;
         }
     }
 }

@@ -23,6 +23,7 @@ public class SimulateListCustomers {
 
         // Act
         Search searchMessage = new Search(1, "Bob", 25);
+        searchMessage.send(connection);
 
         // Assert
         Assertions.assertAll(

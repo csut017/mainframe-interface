@@ -1,5 +1,5 @@
 package mainframe.client;
 
 public final class TestConstants {
-    public static final String BASE_URL = "http://localhost:5251/";
+    public static final String BASE_URL = "https://softeng306.ngrok.app/";
 }

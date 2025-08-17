@@ -8,6 +8,7 @@ public class Retrieve implements Message {
     private String _nationality;
     private String _number;
     private String _status;
+    private String _title;
     public Retrieve() {}
     public Retrieve(String number) {
         _number = number;
@@ -23,6 +24,7 @@ public class Retrieve implements Message {
         if (response.getStatus().getWasSuccessful()) {
             _familyName = response.getValue("familyName");
             _firstName = response.getValue("firstName");
+            _title = response.getValue("title");
             _dateOfBirth = response.getValue("dateOfBirth");
             _nationality = response.getValue("nationality");
             _status = response.getValue("status");
@@ -50,5 +52,8 @@ public class Retrieve implements Message {
     }
     public String getStatus() {
         return _status;
+    }
+    public String getTitle() {
+        return _title;
     }
 }

@@ -118,7 +118,7 @@ public class LoanTests {
         String name = "test_" + Instant.now().toEpochMilli();
         mainframe.client.messages.customer.Create createMessage = sendMessage(
                 connection,
-                new mainframe.client.messages.customer.Create("2001-02-03", "Doe", name, "New Zealand", 1),
+                new mainframe.client.messages.customer.Create("2001-02-03", "Doe", name, "New Zealand", 1, "Mr"),
                 "create");
         String customerNumber = createMessage.getNumber();
 

@@ -8,13 +8,15 @@ public class Update implements Message {
     private String _nationality;
     private String _number;
     private String _status;
+    private String _title;
     public Update() {}
-    public Update(String dateOfBirth, String familyName, String firstName, String nationality, String number) {
+    public Update(String dateOfBirth, String familyName, String firstName, String nationality, String number, String title) {
         _dateOfBirth = dateOfBirth;
         _familyName = familyName;
         _firstName = firstName;
         _nationality = nationality;
         _number = number;
+        _title = title;
     }
     @Override
     public Status send(Connection connection) throws IOException
@@ -27,6 +29,7 @@ public class Update implements Message {
         request.setValue("firstName", _firstName);
         request.setValue("nationality", _nationality);
         request.setValue("number", _number);
+        request.setValue("title", _title);
         MessageResponse response = connection.send(request);
         if (response.getStatus().getWasSuccessful()) {
             _familyName = response.getValue("familyName");
@@ -35,6 +38,7 @@ public class Update implements Message {
             _nationality = response.getValue("nationality");
             _status = response.getValue("status");
             _number = response.getValue("number");
+            _title = response.getValue("title");
         }
         return response.getStatus();
     }
@@ -81,5 +85,13 @@ public class Update implements Message {
     public String getStatus()
     {
         return _status;
+    }
+    public void setTitle(String value)
+    {
+        _title = value;
+    }
+    public String getTitle()
+    {
+        return _title;
     }
 }

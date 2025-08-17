@@ -21,7 +21,7 @@ public class CustomerTests {
         String name = "test_" + Instant.now().toEpochMilli();
         Create createMessage = sendMessage(
                 connection,
-                new Create("2001-02-03", "Doe", name, "New Zealand", 1),
+                new Create("2001-02-03", "Doe", name, "New Zealand", 1, "Mr"),
                 "create");
         String customerNumber = createMessage.getNumber();
         Assertions.assertAll(
@@ -59,7 +59,7 @@ public class CustomerTests {
         String newName = "new_" + name;
         Update updateMessage = sendMessage(
                 connection,
-                new Update("2002-03-04", "Smith", newName, "Australia", customerNumber),
+                new Update("2002-03-04", "Smith", newName, "Australia", customerNumber, "Mr"),
                 "update");
         Assertions.assertAll(
                 () -> Assertions.assertEquals("Smith", updateMessage.getFamilyName(), "familyName does not match"),
