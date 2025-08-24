@@ -40,8 +40,9 @@ public class List implements Message {
                 long idValue = idText == null ? null : Long.parseLong(idText);
                 String isPrimaryValue = response.getValue(i + ":isPrimary");
                 String isMailingValue = response.getValue(i + ":isMailing");
+                String cityValue = response.getValue(i + ":city");
                 String countryValue = response.getValue(i + ":country");
-                _data.add(new Item(countryValue, idValue, isMailingValue, isPrimaryValue, typeValue));
+                _data.add(new Item(cityValue, countryValue, idValue, isMailingValue, isPrimaryValue, typeValue));
             }
         }
         return response.getStatus();
@@ -71,17 +72,22 @@ public class List implements Message {
         return _data.toArray(new Item[_data.size()]);
     }
     public class Item {
+        private String _city;
         private String _country;
         private long _id;
         private String _isMailing;
         private String _isPrimary;
         private String _type;
-        public Item(String country, long id, String isMailing, String isPrimary, String type) {
+        public Item(String city, String country, long id, String isMailing, String isPrimary, String type) {
+            _city = city;
             _country = country;
             _id = id;
             _isMailing = isMailing;
             _isPrimary = isPrimary;
             _type = type;
+        }
+        public String getCity() {
+            return _city;
         }
         public String getCountry() {
             return _country;
